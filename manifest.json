@@ -1,0 +1,52 @@
+{
+    "background": {
+        "scripts": [
+            "src/js/background.js"
+        ]
+    },
+    "browser_action": {
+        "default_title": "Twitter Video Downloader",
+        "default_popup": "src/html/popup.html",
+        "default_icon": {
+            "128": "src/images/favicon.ico"
+        }
+    },
+    "description": "Video and Gif downloader extension for Twitter.",
+    "icons": {
+        "128": "src/images/favicon.ico"
+    },
+    "manifest_version": 2,
+    "name": "twitter.video.downloader",
+    "short_name": "tw.vid.dl",
+    "options_ui": {
+        "chrome_style": false,
+        "page": "src/html/options.html"
+    },
+    "permissions": [
+        "https://twitter.com/*",
+        "https://www.savetweetvid.com/*"
+    ],
+    "web_accessible_resources": [
+        "app.js"
+    ],
+    "content_scripts": [{
+        "matches": ["https://twitter.com/*/status/*"],
+        "js": ["src/js/app.js"]
+    }],
+    "browser_specific_settings": {
+        "gecko": {
+            "id": "twitter.video.dl@m1lken01"
+        }
+    },
+    "permissions": [
+        "tabs",
+        "contextMenus",
+        "cookies",
+        "storage",
+        "sessions",
+        "webRequest",
+        "webRequestBlocking",
+        "<all_urls>"
+    ],
+    "version": "1.0"
+}
