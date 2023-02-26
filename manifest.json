@@ -23,10 +23,6 @@
         "chrome_style": false,
         "page": "src/html/options.html"
     },
-    "permissions": [
-        "https://twitter.com/*",
-        "https://www.savetweetvid.com/*"
-    ],
     "web_accessible_resources": [
         "app.js"
     ],
