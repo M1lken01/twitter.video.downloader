@@ -1,24 +1,22 @@
 {
-    "background": {
-        "scripts": [
-            "src/js/background.js"
-        ]
-    },
+    "manifest_version": 2,
     "browser_action": {
         "default_title": "Twitter Video Downloader",
         "default_popup": "src/html/popup.html",
         "default_icon": {
-            "128": "src/images/favicon.ico"
+            "256": "src/images/favicon256.ico"
         }
     },
-    "update_url": "https://github.com/M1lken01/twitter.video.downloader/blob/main/update.xml",
+    "name": "Twitter Video Downloader",
+    "short_name": "tw.vid.dl",
     "description": "Video and Gif downloader extension for Twitter.",
     "icons": {
-        "128": "src/images/favicon.ico"
+        "256": "src/images/favicon256.ico",
+        "128": "src/images/favicon128.ico",
+        "64": "src/images/favicon64.ico",
+        "48": "src/images/favicon48.ico",
+        "32": "src/images/favicon32.ico"
     },
-    "manifest_version": 2,
-    "name": "twitter.video.downloader",
-    "short_name": "tw.vid.dl",
     "options_ui": {
         "chrome_style": false,
         "page": "src/html/options.html"
@@ -26,6 +24,11 @@
     "web_accessible_resources": [
         "content.js"
     ],
+    "background": {
+        "scripts": [
+            "src/js/background.js"
+        ]
+    },
     "content_scripts": [{
         "matches": ["https://twitter.com/*/status/*"],
         "js": ["src/js/content.js"]
@@ -45,5 +48,5 @@
         "webRequestBlocking",
         "<all_urls>"
     ],
-    "version": "1.2.0"
+    "version": "1.2"
 }
