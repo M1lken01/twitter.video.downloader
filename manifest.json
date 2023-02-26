@@ -11,6 +11,7 @@
             "128": "src/images/favicon.ico"
         }
     },
+    "update_url": "https://github.com/M1lken01/twitter.video.downloader/blob/main/update.xml",
     "description": "Video and Gif downloader extension for Twitter.",
     "icons": {
         "128": "src/images/favicon.ico"
