@@ -25,7 +25,16 @@ function fetchUrl(response) {
     });
     document.querySelector('#title').innerHTML = '@' + localStorage.getItem(storageItems[3]).split('.com/')[1].split('/status')[0];
     for (let i = 0; i < links.length; i++) {
-        document.querySelector('#links').innerHTML += '<li><a href="' + links[i] + '">Download ' + links[i].split('vid/')[1].split('/')[0] + '</a></li>';
+        let name = '';
+        let filename = links[i].split('/')[links[i].split('/').length - 1];
+        if (links[i].includes('vid/')) { // its a video
+            name = links[i].split('vid/')[1].split('/')[0] + ' - ' + filename.split('?')[0];
+        } else if (links[i].includes('tweet_video')) { // its a gif
+            name = filename;
+        } else {
+            return;
+        }
+        document.querySelector('#links').innerHTML += '<li><a href="' + links[i] + '">Download ' + name + '</a></li>';
     }
 }
 

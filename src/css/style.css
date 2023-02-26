@@ -36,42 +36,31 @@ body {
 main {
     display: flex;
     flex-direction: column;
-    margin: 16px;
-    width: 320px;
-}
-
-input,
-button,
-p {
-    border: 1px solid #000;
-    border-radius: 2px;
-    margin: 2px;
-    padding: 4px;
-    width: 100%;
-    -webkit-border-radius: 2px;
-    -moz-border-radius: 2px;
-    -ms-border-radius: 2px;
-    -o-border-radius: 2px;
+    margin: 8px;
+    width: 560px;
 }
 
 ul {
-    padding: 10px;
+    padding: 4px;
 }
 
 li {
-    margin: 8px 0px;
-    padding-left: 8px;
-    border-left: #fff solid 2px;
+    margin: 8px 16px;
+    padding: 16px 4px;
+    border-radius: 8px;
     transition: 0.3s;
     -webkit-transition: 0.3s;
     -moz-transition: 0.3s;
     -ms-transition: 0.3s;
     -o-transition: 0.3s;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    -ms-border-radius: 8px;
+    -o-border-radius: 8px;
 }
 
 li:hover {
-    padding-left: 16px;
-    border-left: #00fbff solid 2px;
+    background-color: #222;
     transition: 0.3s;
     -webkit-transition: 0.3s;
     -moz-transition: 0.3s;
@@ -81,9 +70,9 @@ li:hover {
 
 a {
     color: #00fbff;
+    padding: 16px 4px;
 }
 
-button:hover,
 a:hover {
     cursor: pointer;
 }
