@@ -37,7 +37,7 @@ main {
     display: flex;
     flex-direction: column;
     margin: 16px;
-    width: 400px;
+    width: 320px;
 }
 
 input,

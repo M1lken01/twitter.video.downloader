@@ -2,11 +2,11 @@ const storageItems = ['downloader', 'errorChecks', 'errorDelay', 'currentUrl', '
 const storageItemDefaults = ['savetweetvid', 25, 1000, '', JSON.stringify([])];
 
 document.addEventListener('DOMContentLoaded', function () {
-    chrome.tabs.query({
+    browser.tabs.query({
         active: true,
         currentWindow: true
     }, function (tabs) {
-        chrome.tabs.sendMessage(tabs[0].id, {
+        browser.tabs.sendMessage(tabs[0].id, {
             action: "getURL"
         }, function (response) {
             fetchUrl(response);
@@ -15,10 +15,15 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 function fetchUrl(response) {
+    if (!response.url.includes('/status/'))
+        return
     setLocalStorage(storageItems[3], response.url);
     setLocalStorage(storageItems[4], response.links);
     let links = JSON.parse(localStorage.getItem(storageItems[4]));
-    console.log(links);
+    browser.browserAction.setBadgeText({
+        text: links.length.toString()
+    });
+    document.querySelector('#title').innerHTML = '@' + localStorage.getItem(storageItems[3]).split('.com/')[1].split('/status')[0];
     for (let i = 0; i < links.length; i++) {
         document.querySelector('#links').innerHTML += '<li><a href="' + links[i] + '">Download ' + links[i].split('vid/')[1].split('/')[0] + '</a></li>';
     }
@@ -35,6 +40,9 @@ function setLocalStorage(item, value) {
 }
 
 function init() {
+    browser.browserAction.setBadgeBackgroundColor({
+        color: [0, 183, 255, 255]
+    });
     for (let i = 0; i < storageItems.length; i++) {
         if (localStorage.getItem(storageItems[i]) == null)
             setLocalStorage(storageItems[i], storageItemDefaults[i]);
