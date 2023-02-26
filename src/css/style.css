@@ -26,11 +26,18 @@ textarea {
     white-space: revert;
 }
 
+body {
+    background-color: #111;
+    color: #fff;
+    font-size: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
 main {
     display: flex;
     flex-direction: column;
-    margin: 10px;
-    width: 480px;
+    margin: 16px;
+    width: 400px;
 }
 
 input,
@@ -47,19 +54,36 @@ p {
     -o-border-radius: 2px;
 }
 
-button:hover {
+ul {
+    padding: 10px;
+}
+
+li {
+    margin: 8px 0px;
+    padding-left: 8px;
+    border-left: #fff solid 2px;
+    transition: 0.3s;
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+    -ms-transition: 0.3s;
+    -o-transition: 0.3s;
+}
+
+li:hover {
+    padding-left: 16px;
+    border-left: #00fbff solid 2px;
+    transition: 0.3s;
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+    -ms-transition: 0.3s;
+    -o-transition: 0.3s;
+}
+
+a {
+    color: #00fbff;
+}
+
+button:hover,
+a:hover {
     cursor: pointer;
-}
-
-#answer {
-    min-height: 80px;
-}
-
-.row {
-    display: flex;
-    flex-direction: row;
-}
-
-.highlight {
-    background-color: #FF0;
 }
