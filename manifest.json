@@ -4,18 +4,16 @@
         "default_title": "Twitter Video Downloader",
         "default_popup": "src/html/popup.html",
         "default_icon": {
-            "256": "src/images/favicon256.ico"
+            "512": "src/images/favicon.png"
         }
     },
     "name": "Twitter Video Downloader",
     "short_name": "tw.vid.dl",
     "description": "Video and Gif downloader extension for Twitter.",
     "icons": {
-        "256": "src/images/favicon256.ico",
-        "128": "src/images/favicon128.ico",
-        "64": "src/images/favicon64.ico",
-        "48": "src/images/favicon48.ico",
-        "32": "src/images/favicon32.ico"
+        "512": "src/images/favicon.png",
+        "256": "src/images/favicon256.png",
+        "128": "src/images/favicon128.png"
     },
     "options_ui": {
         "chrome_style": false,
