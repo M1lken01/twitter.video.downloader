@@ -8,17 +8,17 @@ document.addEventListener('DOMContentLoaded', function () {
     }, function (tabs) {
         browser.tabs.sendMessage(tabs[0].id, {
             action: "getURL"
-        }, function (response) {
-            fetchUrl(response);
+        }, function (res) {
+            fetchUrl(res);
         });
     });
 });
 
-function fetchUrl(response) {
-    if (!response.url.includes('/status/'))
+function fetchUrl(res) {
+    if (!res.url.includes('/status/'))
         return
-    setLocalStorage(storageItems[3], response.url);
-    setLocalStorage(storageItems[4], response.links);
+    setLocalStorage(storageItems[3], res.url);
+    setLocalStorage(storageItems[4], res.links);
     let links = JSON.parse(localStorage.getItem(storageItems[4]));
     browser.browserAction.setBadgeText({
         text: links.length.toString()
@@ -38,6 +38,14 @@ function fetchUrl(response) {
     }
 }
 
+function setDownloader() {
+    setLocalStorageWithId(storageItems[0], 'downloader');
+    browser.runtime.sendMessage({
+        action: "setDlr",
+        downloader: localStorage.getItem(storageItems[0])
+    });
+}
+
 function setLocalStorageWithId(item, id) {
     localStorage.setItem(item, document.getElementById(id).value);
     console.log(item + ': ' + localStorage.getItem(item))
@@ -52,6 +60,8 @@ function init() {
     browser.browserAction.setBadgeBackgroundColor({
         color: [0, 183, 255, 255]
     });
+    document.getElementById('downloader').addEventListener('change', e => setDownloader());
+    document.getElementById('downloader').value = localStorage.getItem(storageItems[0]);
     for (let i = 0; i < storageItems.length; i++) {
         if (localStorage.getItem(storageItems[i]) == null)
             setLocalStorage(storageItems[i], storageItemDefaults[i]);

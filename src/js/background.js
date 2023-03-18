@@ -22,14 +22,19 @@ function tabUpdate() {
   });
 }
 
-browser.runtime.onMessage.addListener((req) => {
-  if (req.type === "updateBadge") {
+browser.runtime.onMessage.addListener((req, sender, sendResponse) => {
+  if (req.action === "updateBadge") {
     cachedLen = req.len;
     browser.browserAction.setBadgeText({
       text: cachedLen
     });
     browser.browserAction.setBadgeBackgroundColor({
       color: [0, 183, 255, 255]
+    });
+  }
+  if (req.action === "getDlr") {
+    sendResponse({
+      downloader: localStorage.getItem('downloader')
     });
   }
 });

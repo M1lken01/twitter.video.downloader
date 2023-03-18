@@ -73,6 +73,7 @@ a {
     padding: 16px 4px;
 }
 
-a:hover {
+a:hover,
+select:hover {
     cursor: pointer;
 }
