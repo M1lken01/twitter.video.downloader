@@ -63,8 +63,15 @@ function getLinks(response) {
 }
 
 function createDownloadButton() {
-    if (!document.querySelector('#downloadbutton') && document.querySelectorAll('article')[1].children[0].children[0].children[2].children[5].children[0])
-        document.querySelectorAll('article')[1].children[0].children[0].children[2].children[5].children[0].innerHTML += '<a id="downloadbutton" href="' + downloadLinks[0] + '"><div class="css-1dbjc4n" style="display: inline-grid; justify-content: inherit; transform: rotate(0deg) scale(1) translate3d(0px, 0px, 0px); -moz-box-pack: inherit;"><div class="css-1dbjc4n r-18u37iz r-1h0z5md"><div aria-expanded="false" aria-haspopup="menu" aria-label="Download Tweet" role="button" tabindex="0" class="css-18t94o4 css-1dbjc4n r-1777fci r-hudz2g r-1ny4l3l r-bztko3 r-lrvibr"><div dir="ltr" class="css-901oao r-1awozwy r-14j79pv r-6koalj r-37j5jr r-1b43r93 r-16dba41 r-1h0z5md r-14yzgew r-bcqeeo r-o7ynqc r-clp7b1 r-3s2u2q r-qvutc0"><div class="css-1dbjc4n r-xoduu5"><div class="css-1dbjc4n r-1niwhzg r-sdzlij r-1p0dtai r-xoduu5 r-1d2f490 r-xf4iuw r-1ny4l3l r-u8s1d r-zchlnj r-ipm5af r-o7ynqc r-6416eg"></div>' + downloadBtnSvg + '</div></div></div></div></div></a>';
+    if (document.querySelectorAll('article') != undefined) {
+        let btnHtml;
+        if (document.querySelectorAll('article')[0].querySelectorAll('video').length == 0) // if true then video is a reply
+            btnHtml = document.querySelectorAll('article')[1].children[0].children[0].children[2].children[5].children[0];
+        else
+            btnHtml = document.querySelectorAll('article')[0].children[0].children[0].children[2].children[4].children[0];
+        if (!document.querySelector('#downloadbutton') && btnHtml)
+            btnHtml.innerHTML += '<a id="downloadbutton" href="' + downloadLinks[0] + '"><div class="css-1dbjc4n" style="display: inline-grid; justify-content: inherit; transform: rotate(0deg) scale(1) translate3d(0px, 0px, 0px); -moz-box-pack: inherit;"><div class="css-1dbjc4n r-18u37iz r-1h0z5md"><div aria-expanded="false" aria-haspopup="menu" aria-label="Download Tweet" role="button" tabindex="0" class="css-18t94o4 css-1dbjc4n r-1777fci r-hudz2g r-1ny4l3l r-bztko3 r-lrvibr"><div dir="ltr" class="css-901oao r-1awozwy r-14j79pv r-6koalj r-37j5jr r-1b43r93 r-16dba41 r-1h0z5md r-14yzgew r-bcqeeo r-o7ynqc r-clp7b1 r-3s2u2q r-qvutc0"><div class="css-1dbjc4n r-xoduu5"><div class="css-1dbjc4n r-1niwhzg r-sdzlij r-1p0dtai r-xoduu5 r-1d2f490 r-xf4iuw r-1ny4l3l r-u8s1d r-zchlnj r-ipm5af r-o7ynqc r-6416eg"></div>' + downloadBtnSvg + '</div></div></div></div></div></a>';
+    }
 }
 
 function init() {
@@ -92,6 +99,3 @@ browser.runtime.onMessage.addListener(function (req, sender, sendResponse) {
 });
 
 init();
-
-//document.getElementsByTagName('article')[0].children[0].children[0].children[0].children[2].children[6].children[0].innerHTML += '<button>Download</button>'
-//document.getElementsByTagName('article')[0].children[0].children[0].children[0].children[1].children[1].children[1].children[2].innerHTML += '<button onclick="a()" id="customd">Download</button>';
